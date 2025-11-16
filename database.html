@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game DB - Cookie Clicker</title>
+<style>
+  body { background:#111; color:white; font-family:Arial; text-align:center; padding:30px; }
+  iframe { border:none; width:80vw; height:80vh; margin-top:20px; }
+  input, button { padding:10px; font-size:1em; }
+</style>
+</head>
+<body>
+
+<h1>My Game DB</h1>
+<p>Type the game ID to load it!</p>
+<input id="gameId" placeholder="Game ID">
+<button onclick="loadGame()">Load Game</button>
+
+<div id="gameContainer"></div>
+
+<script>
+// Database is read from the URL hash
+function getDB() {
+  try {
+    const raw = decodeURIComponent(location.hash.slice(1));
+    return JSON.parse(raw || '{}');
+  } catch(e) {
+    return {};
+  }
+}
+
+function loadGame() {
+  const db = getDB();
+  const id = document.getElementById('gameId').value.trim();
+  const container = document.getElementById('gameContainer');
+
+  if(db[id]) {
+    container.innerHTML = `<iframe src="${db[id]}"></iframe>`;
+  } else {
+    container.innerHTML = "<p>Game not found in DB.</p>";
+  }
+}
+</script>
+
+</body>
+</html>
