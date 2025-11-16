@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cookie Clicker DB</title>
+<style>
+  body { background:#111; color:white; font-family:Arial; text-align:center; padding:30px; }
+  iframe { border:none; width:80vw; height:80vh; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<h1>Cookie Clicker DB</h1>
+
+<div id="gameContainer"></div>
+
+<script>
+// Mini database: your Cookie Clicker game
+const db = {
+  "cookie": "https://cdn.jsdelivr.net/gh/KrnlScriptMakerTryer/cookie-clicker-fixxed/index.html"
+};
+
+// Auto-load the game (no typing needed)
+const gameContainer = document.getElementById('gameContainer');
+gameContainer.innerHTML = `<iframe src="${db.cookie}"></iframe>`;
+</script>
+
+</body>
+</html>
